@@ -17,7 +17,7 @@ services:
     networks:
        - profile-network
     depends_on:
-      - database  
+      - database
 
   database:  
     container_name: mongoDB
@@ -28,12 +28,12 @@ services:
     networks:
        - profile-network
     volumes:
-      - ./data:/data/db  
+      - profiledata:/data/db  
 
   mongo-express:
     container_name: express
     image: mongo-express:1.0-20-alpine3.19
-    restart: always 
+    restart: always  
     ports:
       - 8080:8081
     environment:
@@ -43,4 +43,7 @@ services:
     networks:
        - profile-network
     depends_on:
-      - database  
+      - database
+
+volumes:
+  profiledata:
